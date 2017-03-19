@@ -20,7 +20,7 @@ $(function() {
 
 		// Submit the form using AJAX.
 		$.ajax({
-			type: 'POST',
+			type: 'GET',
 			url: $(form).attr('action'),
 			data: formData
 		})
