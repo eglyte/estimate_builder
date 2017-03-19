@@ -1,0 +1,86 @@
+.container {
+	font-family: 'Fjalla One', sans-serif;
+	font-weight: 400 !important;
+}
+.container label { font-weight: 400; }
+.container dt { font-size: 16px; }
+.modal-body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+#calc {
+	position: relative;
+}
+#result {
+	
+}
+#result .label {
+	font-size: 100%;
+	font-weight: 400;
+}
+/*#controls input[type=number] { width: 50%; }*/
+.glyphicon-info-sign { 
+	color: #006fbf;
+	cursor: pointer; 
+}
+.help-block { display: none; }
+#message {
+	margin-bottom: 2rem;
+}
+.form-buttons {
+	margin-bottom: 2rem;
+}
+.position-fixed {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 9;
+}
+.location:nth-child(even) {
+    background: #eeeeee;
+}
+.location:not(:first-child) { margin-bottom: 2rem; padding: 2rem 0; }
+
+.panel-default > .panel-heading {
+	background-color: #006fbf;
+}
+.panel-title {
+	color: #fff;
+}
+.panel:hover {
+	background-color: #edf6fe;
+}
+.location .panel-body {
+	background-image: url('../images/sprite-steps.png');
+	background-repeat: no-repeat;
+	padding: 15px 15px 15px 95px;
+}
+
+.step-room .panel-body {
+	background-position: 15px 20px;
+}
+.step-device .panel-body {
+	background-position: 15px -154px;
+}
+.step-doors .panel-body {
+	background-position: 15px -410px;
+}
+.step-windows .panel-body {
+	background-position: 15px -662px;
+}
+
+.step-room:hover .panel-body {
+	background-image: url('../images/sprite-steps-hover.png');
+	background-position: 15px 20px;
+}
+.step-device:hover .panel-body {
+	background-image: url('../images/sprite-steps-hover.png');
+	background-position: 15px -154px;
+}
+.step-doors:hover .panel-body {
+	background-image: url('../images/sprite-steps-hover.png');
+	background-position: 15px -410px;
+}
+.step-windows:hover .panel-body {
+	background-image: url('../images/sprite-steps-hover.png');
+	background-position: 15px -662px;
+}

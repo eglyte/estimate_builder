@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" />
+    <title>Estimate Builder | Tap Security</title>
+    
+    <link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+  </head>
+  <body>
+    <div class="container">
+      <h1>Estimate Builder</h1>
+    </div>
+     
+      <form id="ajax-contact" method="post" action="mailer.php">
+        <div class="container">
+          <div class="form-messages alert" role="alert"></div>
+        </div>
+        <fieldset class="container">
+          <legend>Contact Details</legend>
+          <div class="row">
+            <div class="form-group col-md-4 col-sm-6">
+              <label for="inputName">Name</label>
+              <input type="text" class="form-control" id="inputName" name="name" placeholder="Name" required="required">
+            </div>
+            <div class="form-group col-md-4 col-sm-6">
+              <label for="inputPhoneNumber">Phone number</label>
+              <input type="tel" class="form-control" id="inputPhoneNumber" name="phone" placeholder="Phone number" required="required">
+            </div>
+            <div class="form-group col-md-4 col-sm-6">
+              <label for="inputEmail">Email</label>
+              <input type="email" class="form-control" id="inputEmail" name="email" placeholder="email@example.com" required="required">
+            </div>
+
+            <div class="form-group col-md-4 col-sm-6">
+              <label for="inputAddressLineOne">Address Line One</label>
+              <input type="text" class="form-control" id="inputAddressLineOne" name="address1" placeholder="Address Line One" required="required">
+            </div>
+            <div class="form-group col-md-4 col-sm-6">
+              <label for="inputAddressLineTwo">Address Line Two</label>
+              <input type="text" class="form-control" id="inputAddressLineTwo" name="address2" placeholder="Address Line Two">
+            </div>
+            <div class="form-group col-md-4 col-sm-6">
+              <label for="inputTown">Town / City</label>
+              <input type="text" class="form-control" id="inputTown" name="town" placeholder="Town / City" required="required">
+            </div>
+
+            <div class="form-group col-md-4 col-sm-6">
+              <label for="inputCounty">County</label>
+              <input type="text" class="form-control" id="inputCounty" name="county" placeholder="County" required="required">
+            </div>
+            <div class="form-group col-md-4 col-sm-6">
+              <label for="inputPostCode">Post Code</label>
+              <input type="text" class="form-control" id="inputPostCode" name="post-code" placeholder="Post Code" required="required">
+            </div>
+
+          </div>
+          <h3 class="text-info">Systems start at £ 199.00 + VAT which includes:</h3>
+          <ul>
+            <li>A main control panel </li>
+            <li>Live &amp; Decoy External Sounders</li>
+            <li>NSI Certificate</li>
+            <li>Full Installation</li>
+          </ul>
+        </fieldset>        
+        
+        <fieldset id="message">  
+          <div class="container">        
+              <div id="result" class="pull-right">
+                <h4>Total price 
+                <input type="text" name="total" value="199.00" class="form-control" readonly></h4>
+              </div>  
+          </div>        
+        </fieldset>
+
+        <fieldset id="calc">        
+          <fieldset id="allLocations">
+            <div class="bodyLocation">
+              <div class="location" id="location">
+                <fieldset class="container">                
+                <legend>Add devices to your system</legend>
+              
+                 <!-- Step 1 - Room -->
+                <div class="panel panel-default step-room">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Step 1</h3>
+                  </div>
+                  <div class="panel-body">
+                    <div class="row">
+                      <div class="form-group col-md-4 col-sm-6">
+                        <label for="selectRoom">Please select room:</label>
+                        <select class="form-control selectRoom" id="selectRoom" required="required" name="room[]">
+                          <option value="">Select One</option>
+                          <option value="Lounge">Lounge</option>
+                          <option value="Kitchen">Kitchen</option>
+                          <option value="Dining Room">Dining Room</option>
+                          <option value="Study">Study</option>
+                          <option value="Utility Room">Utility Room</option>
+                          <option value="Hall">Hall</option>
+                          <option value="Landing">Landing</option>
+                          <option value="Bedroom">Bedroom</option>
+                          <option value="Conservatory">Conservatory</option>
+                          <option value="Garage">Garage</option>
+                        </select>
+                      </div>                             
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 1 - Room end -->
+
+                <!-- Step 2 - Movement detection -->
+                <div class="panel panel-default step-device">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Step 2</h3>
+                  </div>
+                  <div class="panel-body">
+                    <div class="row step">
+                       <div class="form-group col-md-4 col-sm-6">
+                        <label for="selectRoomDevice">Please select movement detection device <span class="glyphicon glyphicon-info-sign" data-toggle="modal" data-target="#roomDevice"></span></label>
+                        <select class="form-control selectDevice" id="selectRoomDevice" name="roomDevice[]">
+                          <option value="Not selected" data-value="0">Not required</option>
+                          <option value="Passive Infra Red Detector" data-value="48">Passive Infra Red Detector</option>
+                          <option value="Dual Technology Detector" data-value="67.5">Dual Technology Detector</option>
+                        </select>
+                        <span class="help-block">Select Device</span>
+                      </div>
+                       <div class="form-group col-md-2 col-sm-4">
+                        <label for="inputRoomNumberDevices">Number of Devices</label>
+                        <input type="number" min="1" max="2" class="form-control numberDevices" id="inputRoomNumberDevices" placeholder="Number of Devices" name="numberRoomDevice[]">
+                        <span class="help-block">Value must be less than or equal to 2</span>
+                      </div>
+                      <div class="form-group col-md-2 col-sm-2 col-md-offset-4">
+                        <label for="roomDevicesPrice">Devices Price</label>
+                        <input id="roomDevicesPrice" class="form-control price" type="text" placeholder="0.00" value="0.00" name="roomDevicePrice[]" readonly>
+                      </div>       
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 2 - movement detection end -->
+                
+                <!-- Step 3 - Doors protection -->
+                <div class="panel panel-default step-doors">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Step 3</h3>
+                  </div>
+                  <div class="panel-body">
+                    <div class="row step">
+                      <div class="form-group col-md-4 col-sm-6">
+                        <label for="selectDoorsDevice">Please select door detection <span class="glyphicon glyphicon-info-sign" data-toggle="modal" data-target="#doorDevice"></span></label>
+                        <select class="form-control selectDevice" id="selectDoorsDevice" name="doorDevice[]">
+                          <option data-value="0" value="Not selected">Not required</option>
+                          <option data-value="40" value="Magnetic Contact">Magnetic Contact</option>
+                          <option data-value="48" value="Shock Sensor">Shock Sensor</option>
+                          <option data-value="55" value="Shock Contact">Shock Contact</option>
+                        </select>   
+                        <span class="help-block">Select Device</span>             
+                      </div>
+                      <div class="form-group col-md-2 col-sm-4">
+                        <label for="inputNumberDevices">Number of Devices</label>
+                        <input type="number" min="1" max="4" class="form-control numberDevices" id="inputNumberDevices" placeholder="Number of Devices" name="doorDeviceNumber[]">
+                        <span class="help-block">Value must be less than or equal to 4</span>
+                      </div> 
+                      <div class="form-group col-md-2 col-sm-2 col-md-offset-4">
+                        <label for="doorsDevicesPrice">Devices Price</label>
+                        <input id="doorsDevicesPrice" class="form-control price" type="text" placeholder="0.00" value="0.00" name="doorDevicePrice[]" readonly>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 3 - Doors end -->
+                
+                <!-- Step 4 - Windows -->
+                <div class="panel panel-default step-windows">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Step 4</h3>
+                  </div>
+                  <div class="panel-body">
+                    <div class="row step">
+                      <div class="form-group col-md-4 col-sm-6">
+                        <label for="selectWindowDevice">Please select window detection <span class="glyphicon glyphicon-info-sign" data-toggle="modal" data-target="#doorDevice"></span></label>
+                        <select class="form-control selectDevice" id="selectWindowDevice" name="windowDevice[]">
+                          <option data-value="0" value="Not selected">Not required</option>
+                          <option data-value="40" value="Magnetic Contact">Magnetic Contact</option>
+                          <option data-value="48" value="Shock Sensor">Shock Sensor</option>
+                          <option data-value="55" value="Shock Contact">Shock Contact</option>
+                        </select>
+                        <span class="help-block">Select Device</span>
+                      </div>
+                       <div class="form-group col-md-2 col-sm-4">
+                        <label for="inputWindowNumberDevices">Number of Devices</label>
+                        <input type="number" min="1" max="3" class="form-control numberDevices" id="inputWindowNumberDevices" placeholder="Number of Devices" name="windowDeviceNumber[]">
+                        <span class="help-block">Value must be less than or equal to 3</span>
+                      </div>
+                      <div class="form-group col-md-2 col-sm-2 col-md-offset-4">
+                        <label for="windowsDevicesPrice">Devices Price</label>
+                        <input id="windowsDevicesPrice" class="form-control price" type="text" placeholder="0.00" value="0.00" name="windowDevicePrice[]" readonly>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 4 - Windows end -->  
+                <button type="button" class="btn btn-danger removeLocation" id="removeLocation" style="display:none;"><span class="glyphicon glyphicon-remove"></span></button>  
+                </fieldset>   
+              </div>
+              <!-- Location end -->  
+              
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class="form-group col-md-4 col-sm-6">
+                  <button type="button" class="btn btn-primary addLocation"><span class="glyphicon glyphicon-plus"></span> Add next room</button> 
+                </div>
+              </div>
+            </div>
+            <!-- All Locations end -->         
+        </fieldset>
+
+          <!-- Step 5 - Controls -->
+          <fieldset id="controls" class="container">
+            <legend>Choose any of the following ways to control your system</legend>
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="row step">              
+                  <div class="col-md-4 col-sm-6">
+                    <img src="images/remote-panic.png" alt="Remote panic">
+                  </div>
+                  <div class="form-group col-md-4 col-sm-6">                
+                    <label for="inputControlDevices1">
+                      <input type="checkbox" value="Remote User Fob" data-value="32" class="selectDevice" id="inputControlDevices1" name="controlDevice1"> 
+                      Remote User Fob
+                      <span class="help-block">Select Device</span>
+                    </label>
+                  </div>              
+                  <div class="form-group col-md-2 col-sm-2">
+                    <input type="number" min="1" max="32" class="form-control numberDevices" placeholder="Number of Devices" name="controlDeviceNumber1">
+                    <span class="help-block">Value must be less than or equal to 32</span>
+                  </div>
+                  <div class="form-group col-md-1 col-sm-2">
+                    <input id="controlDevice1Price" class="form-control price" type="text" placeholder="0.00" value="0.00" name="controlDevicePrice1" readonly>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="row step">
+                  <div class="col-md-4 col-sm-6">
+                    <img src="images/arming-station.png" alt="Arming Station">
+                  </div>
+                  <div class="form-group col-md-4 col-sm-6">                              
+                    <label for="inputControlDevices2">
+                      <input type="checkbox" value="Arming station" data-value="70" class="selectDevice" id="inputControlDevices2" name="controlDevice2">
+                      Arming station
+                      <span class="help-block">Select Device</span>
+                    </label>                  
+                  </div>
+                  <div class="form-group col-md-2 col-sm-2">
+                    <input type="number" min="1" max="4" class="form-control numberDevices" placeholder="Number of Devices" name="controlDeviceNumber2">
+                    <span class="help-block">Value must be less than or equal to 4</span>
+                  </div>
+                  <div class="form-group col-md-1 col-sm-2">
+                    <input id="controlDevice2Price" class="form-control price" type="text" placeholder="0.00" value="0.00" name="controlDevicePrice2" readonly>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="row step">
+                  <div class="col-md-4 col-sm-6">
+                    <img src="images/Enforcer-Panel-Open-Keypad.png" alt="Keypad On-board">
+                  </div>
+                  <div class="form-group col-md-4 col-sm-6">
+                    <label for="inputControlDevices3">
+                      <input type="checkbox" value="Keypad On-board" data-value="0" class="selectDevice" id="inputControlDevices3" name="controlDevice3">
+                      Keypad On-board
+                    </label>
+                  </div>
+                  <div class="form-group col-md-2 col-sm-2">
+                    <input type="hidden" class="numberDevices" value="1" name="controlDeviceNumber3">
+                  </div>
+                  <div class="form-group col-md-1 col-sm-2">
+                    <input type="hidden" id="controlDevice3Price" class="price" value="0.00" name="controlDevicePrice3">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="row step">
+                  <div class="col-md-4 col-sm-6">
+                    <img src="images/mobile-app-control.png" alt="Mobile APP control">
+                  </div>
+                  <div class="form-group col-md-6 col-sm-6">  
+                    <label for="inputControlDevices4">
+                      <input type="checkbox" value="Mobile Application" data-value="115" class="selectDevice" id="inputControlDevices4" name="controlDevice4">
+                      Mobile Application
+                    </label>
+                  </div>
+                  <div class="form-group col-md-2 col-sm-2">
+                    <input type="hidden" class="numberDevices" value="1" name="controlDeviceNumber4">
+                  </div>
+                  <div class="form-group col-md-1 col-sm-2">
+                    <input id="controlDevice4Price" class="form-control price" type="text" placeholder="0.00" value="0" name="controlDevicePrice4" readonly>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <!-- Step 5 - Controls end -->
+          
+        </fieldset>          
+        <!-- buttons -->
+        <div class="container form-buttons">
+          <button type="submit" class="btn btn-primary submit">Get quotation</button>
+          <button type="reset" class="btn btn-default reset">Reset</button>
+        </div>
+        <div class="container">
+          <div class="form-messages alert" role="alert"></div>
+        </div>
+      </form>
+
+
+      <!-- Modal - doorDevice -->
+      <div class="modal fade" id="doorDevice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel1">How each detection device can be used</h4>
+            </div>
+            <div class="modal-body">
+              <dl>
+                <dt>Magnetic contact</dt>
+                <dd>Can be installed on windows and doors to detect opening.</dd>
+                <dt>Shock sensor</dt>
+                <dd>Can be installed on windows and doors to detect conditions created by forced entry.</dd>
+                <dt>Shock contact</dt>
+                <dd>Can be installed on windows and doors to detect opening and/or conditions created by forced entry.</dd>
+              </dl>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- Modal - areaDevice -->
+      <div class="modal fade" id="areaDevice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel2">How each detection device can be used</h4>
+            </div>
+            <div class="modal-body">
+              <dl>
+                <dt>Dual Technology Detectors</dt>
+                <dd>Are used to detect physical movement within areas such as Conservatories and Garages where temperature can rapidly change.</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal - roomDevice -->
+      <div class="modal fade" id="roomDevice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel3">How each detection device can be used</h4>
+            </div>
+            <div class="modal-body">
+              <dl>
+                <dt>Passive Infra Red Detector</dt>
+                <dd>Are used to detect physical movement within the protected room.</dd>
+
+                <dt>Dual Technology Detector</dt>
+                <dd>Are used to detect physical movement within areas such as Conservatories and Garages where temperature can rapidly change.</dd>
+              </dl>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- Modal - max device number reached -->
+      <div class="modal fade" id="maxDevice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel4">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel4">The maximum dvice number has been exceeded</h4>
+            </div>
+            <div class="modal-body">
+              <div class="alert alert-warning" role="alert">
+                <p>Devices number reached <span class="maxNumber"></span></p>
+                <p>Total devices number must be less than or equal to 32</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
